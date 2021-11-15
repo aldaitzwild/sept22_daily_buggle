@@ -11,5 +11,5 @@ return [
     'ajax/articles' => ['AjaxController', 'articlesJson',],
     'ajax/random/article' => ['AjaxController', 'randomArticleJson',],
     'ajax/search/articles' => ['AjaxController', 'searchArticlesJson',['search']],
-    'ajax/article' => ['AjaxController', 'getArticleByIdJson',['id']],
+    'article' => ['HomeController', 'show',['id']],
 ];

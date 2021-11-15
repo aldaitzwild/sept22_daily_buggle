@@ -17,7 +17,18 @@ document.getElementById('changeHeadlineButton').addEventListener('click', functi
 
 document.getElementById('searchHeadline').addEventListener('change', function(e) {
     //Here we get the value typed in the input
-    var search = e.target.value;
+    let search = e.target.value;
 
     //TODO 2 : Call the route 'ajax/search/articles' to get the list of the articles targeted by the search
+    fetch('ajax/search/articles?search=' + search)
+    .then(response => response.json())
+    .then(data => {
+
+        let resultList = document.getElementById('resultList');
+
+        for (const article of data) {
+            resultList.innerHTML += "<li><a href='/ajax/article?id=" + article.id + "'>" + article.title + "</a></li>";
+        }
+
+    }); 
 });
