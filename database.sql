@@ -1,7 +1,3 @@
-CREATE DATABASE daily_buggle;
-
-USE daily_buggle;
-
 CREATE TABLE Article (
 	id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 	title varchar(250) NOT NULL,
