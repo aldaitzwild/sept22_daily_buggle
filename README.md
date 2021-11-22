@@ -12,7 +12,7 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 
 ## To start
 
-1. Clone the repo from Github : https://github.com/WildCodeSchool/php_daily_buggle_workshop.
+1. Clone the repo from [Github](https://github.com/WildCodeSchool/php_daily_buggle_workshop).
 2. Run `composer install`.
 3. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters. Don't delete the *.dist* file, it must be kept.
 ```php
@@ -27,12 +27,12 @@ define('APP_DB_PASSWORD', 'your_db_password');
 
 ## Get a random headline without reloading the page
 
-1. First, you have to prepare the server side. Take a look at `routes.php`, you'll see you already have the route `ajax/random/article`. Try it (http://localhost:8000/ajax/random/article). Yes, nothing...
+1. First, you have to prepare the server side. Take a look at `routes.php`, you'll see you already have the route `ajax/random/article`. Try it [http://localhost:8000/ajax/random/article](http://localhost:8000/ajax/random/article). Yes, nothing...
 
 2. To fix it, go to `AjaxController.php` and complete the function `randomArticleJson()`. This function should return the data of a random article in JSON (only one article !). 
 * Hint 1 : Take a look at articlesJson() to see how to get articles and return JSON.
 * Hint 2 : `array_rand()` can help to select a random element in a array
-* Result : If you did right, http://localhost:8000/ajax/random/article should look something like that : 
+* Result : If you did right, [http://localhost:8000/ajax/random/article](http://localhost:8000/ajax/random/article) should look something like that : 
 ```
 {
   "id": "3",
@@ -47,7 +47,7 @@ define('APP_DB_PASSWORD', 'your_db_password');
 3. Once the route is ready, let's go to the client side. In `public\assets\js\script.js`, you'll find a `//TODO 1 : Get a random article`, this is the part of the code which will be triggered on the click of the "Change the headline" button. 
 
 This is where you have to work to get to contact the route `ajax/random/article`, get the data of the headline and update the homepage.
-* Hint 1 : Use `fetch()` in js to to call the route (https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+* Hint 1 : Use `fetch()` in js to to call the route : [doc](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 * Hint 2 : When you have the data, use the function updateHeadline(title, picture, content) which will update the page for you.
 4. Try it. 
 
@@ -59,7 +59,7 @@ The previous developer started to implement the feature in the div `searchMenu` 
 In `routes.php` there is `ajax/search/articles`. Be careful, this route take one parameter.
 First prepare this route to return all the articles wich contains in the title the word passed in parameter. 
 
-It should look something like that http://localhost:8000/ajax/search/articles?search=spider <= here we search all the articles which contains the word "spider" in their title.
+It should look something like that [http://localhost:8000/ajax/search/articles?search=spider](http://localhost:8000/ajax/search/articles?search=spider) <= here we search all the articles which contains the word "spider" in their title.
 
 * Hint 1 : You'll need a new function in the `ArticleManager`
 * Hint 2 : Your controller should respond a collection of article in JSON
