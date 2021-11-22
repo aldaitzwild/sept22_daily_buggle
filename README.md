@@ -1,4 +1,4 @@
-# Atelier Daily Buggle
+# Workshop Daily Buggle
 
 ## Description
 
