@@ -12,7 +12,7 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 
 ## To start
 
-1. Clone the repo from Github.
+1. Clone the repo from Github : https://github.com/WildCodeSchool/php_daily_buggle_workshop.
 2. Run `composer install`.
 3. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters. Don't delete the *.dist* file, it must be kept.
 ```php
