@@ -19,5 +19,5 @@ document.getElementById('searchHeadline').addEventListener('change', function(e)
     //Here we get the value typed in the input
     let search = e.target.value;
 
-    //TODO 2 : Call the route 'ajax/search/articles' to get the list of the articles targeted by the search
+    //TODO 2 : Call the route 'api/articles/search' to get the list of the articles targeted by the search
 });

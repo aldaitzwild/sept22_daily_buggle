@@ -6,8 +6,14 @@ use App\Model\ArticleManager;
 
 class AjaxController extends AbstractController
 {
+    public function __construct()
+    {
+        parent::__construct();
 
-    public function articlesJson(): string
+        header('Content-Type: application/json');
+    }
+
+    public function getArticles(): string
     {
         $articleManager = new ArticleManager();
         $articles = $articleManager->selectAll();
@@ -15,13 +21,13 @@ class AjaxController extends AbstractController
         return json_encode($articles);
     }
 
-    public function randomArticleJson(): string
+    public function getRandomArticle(): string
     {
         //TODO
         return "";
     }
 
-    public function searchArticlesJson(string $search): string
+    public function searchArticles(string $search): string
     {
         //TODO
         return "$search";
