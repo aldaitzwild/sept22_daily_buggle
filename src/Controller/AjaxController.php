@@ -33,7 +33,7 @@ class AjaxController extends AbstractController
         return "$search";
     }
 
-    public function getArticleByIdJson(int $id): string
+    public function getArticleById(int $id): string
     {
         //TODO
         return "$id";

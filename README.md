@@ -14,16 +14,9 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 
 1. Clone the repo from [Github](https://github.com/WildCodeSchool/php_daily_buggle_workshop).
 2. Run `composer install`.
-3. Create *config/db.php* from *config/db.php.dist* file and add your DB parameters. Don't delete the *.dist* file, it must be kept.
-```php
-define('APP_DB_HOST', 'your_db_host');
-define('APP_DB_NAME', 'your_db_name');
-define('APP_DB_USER', 'your_db_user_wich_is_not_root');
-define('APP_DB_PASSWORD', 'your_db_password');
-```
+3. Configure your *config/db.php* from *config/db.php.dist* file and add your DB parameters.
 4. Import data in your SQL server with the command `php migration.php`;
-5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`. The option `-t` with `public` as parameter means your localhost will target the `/public` folder.
-6. Go to `localhost:8000` with your favorite browser.
+5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`.
 
 ## Get a random headline without reloading the page
 
