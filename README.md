@@ -18,15 +18,15 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 4. Import data in your SQL server with the command `php migration.php`;
 5. Run the internal PHP webserver with `php -S localhost:8000 -t public/`.
 
-## Get a random headline without reloading the page
+## STEP 1 : Get a random headline without reloading the page
 
 1. First, you have to prepare the server side. Take a look at `routes.php`, you'll see you already have the route `api/articles/random`. Try it [http://localhost:8000/api/articles/random](http://localhost:8000/api/articles/random). Yes, nothing...
 
 2. To fix it, go to `AjaxController.php` and complete the function `getRandomArticle()`. This function should return the data of a random article in JSON (only one article !). 
-* Hint 1 : Take a look at articlesJson() to see how to get articles and return JSON.
-* Hint 2 : `array_rand()` can help to select a random element in a array
+* Hint 1 : Create a custom method `selectRandomOne()` in `ArticleManager`
+* Hint 2 : Use `ORDER BY RAND() LIMIT 1` in your query to get only **one** random result
 * Result : If you did right, [http://localhost:8000/api/articles/random](http://localhost:8000/api/articles/random) should look something like that : 
-```
+```json
 {
   "id": "3",
   "title": "Doctor Octopus holds up another bank !",
@@ -37,28 +37,26 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 }
 ```
 
-3. Once the route is ready, let's go to the client side. In `public\assets\js\script.js`, you'll find a `//TODO 1 : Get a random article`, this is the part of the code which will be triggered on the click of the "Change the headline" button. 
+3. Once the route is ready, let's go to the client side. In `public\assets\js\script.js`, you'll find a `//TODO 1 : Get a random article`, this is the part of the code which will be triggered on the click of the "Change the headline" button. The event listener is already configured.
 
-This is where you have to work to get to contact the route `api/articles/random`, get the data of the headline and update the homepage.
-* Hint 1 : Use `fetch()` in js to to call the route : [doc](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-* Hint 2 : When you have the data, use the function updateHeadline(title, picture, content) which will update the page for you.
-4. Try it. 
+This is where you have to work to contact the route `api/articles/random`, get the data of the headline and update the homepage.
+* Hint 1 : Use `fetch()` in JS to to call the route : [doc](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+* Hint 2 : When you have the JSON data, use the provided function `updateHeadlineArticle(article)` which will update the DOM of the homepage with the data of the random article.
 
-## Add a menu to select a headline from specific keywords
+## STEP 2 : Add a menu to select a headline from specific keywords
 
-1. Now we need to be able to select a specific article by a keyword of its title. 
-The previous developer started to implement the feature in the div `searchMenu` from `index.html.twig`. He also let a `//TODO 2` in `script.js` to trigger some code when type something in the input.
+1. Now we need to be able to select a specific article by a keyword of its title.
+The previous developer started to implement the feature in the div `searchMenu` (which opens when you click on button "Search for a specific headline") from `index.html.twig`. He also let a `//TODO 2` in `script.js` to trigger some code when type something in the input.
 
-In `routes.php` there is `api/articles/search`. Be careful, this route take one parameter.
-First prepare this route to return all the articles wich contains in the title the word passed in parameter. 
+In `routes.php` there is `api/articles/search`. Be careful, this route takes one parameter. It refers to `searchArticles()` method of the `AjaxController`.
+First prepare this route to return all the articles which contains in the title the word passed in parameter.
 
 It should look something like that [http://localhost:8000/api/articles/search?search=spider](http://localhost:8000/api/articles/search?search=spider) <= here we search all the articles which contains the word "spider" in their title.
 
-* Hint 1 : You'll need a new function in the `ArticleManager`
-* Hint 2 : Your controller should respond a collection of article in JSON
-* Result : For it shoul respond :
+* Hint 1 : You'll need a new method in the `ArticleManager` (and use a LIKE) 
+* Hint 2 : Your `searchArticles()` method in `AjaxController` should return a collection of articles in JSON :
 
-```
+```json
 [
   {
     "id": "1",
@@ -80,8 +78,8 @@ It should look something like that [http://localhost:8000/api/articles/search?se
 ```
 
 
-2. Once the route is good. Go back in `script.js` to call it and feed the `<ul id="resultList">` with the titles of articles matched.
+2. Once the method works, go back in `script.js` to call the associated route `api/articles/search?search=mySearch` with `fetch()`. The associated Event Listener will be execute each time a new letter is added in the input field. The query string should use the actual value in the input (it is already done with the line `let search = e.target.value;`)
 
-3. Now, make these titles clickables and send to route `/article`
-* Hint 1 : Remember to look at the route in `routes.php` to know what this route needs to work.
+3. Once you get JSON response, you should feed the `<ul id="resultList">` with the titles of articles matched.
 
+**BONUS** : Now, make these titles clickables and send to route `/article` (look at the route in `routes.php` to know what this route needs to work.) and complete the controller to display a page with the article details. 
