@@ -41,7 +41,7 @@ So now it's your job to fix it ! Your goal: Pick a random headline without reloa
 
 This is where you have to work to contact the route `api/articles/random`, get the data of the headline and update the homepage.
 * Hint 1 : Use `fetch()` in JS to to call the route : [doc](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-* Hint 2 : When you have the JSON data, use the provided function `updateHeadlineArticle(article)` which will update the DOM of the homepage with the data of the random article.
+* Hint 2 : When you have the JSON data, use the provided function `updateHeadline(article)` which will update the DOM of the homepage with the data of the random article.
 
 ## STEP 2 : Add a menu to select a headline from specific keywords
 
